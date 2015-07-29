@@ -1,13 +1,12 @@
-# alldebian
+# crawl arch
 
-Graph crawler of Debian archive
+Graph crawler of Arch archive
 
 # install
 
-This will produce local version of the graph layout for debian package manager:
+This will produce local version of the graph layout for arch package manager:
 
 ```
-git clone https://github.com/anvaka/alldebian
 cd alldebian
 npm install
 download.sh

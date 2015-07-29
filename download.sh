@@ -1,5 +1,11 @@
 #!/bin/bash
-# Not sure which one is better. amd64 seem to be more complete
-curl http://ftp.debian.org/debian/dists/sid/main/binary-amd64/Packages.gz > data/packages.gz
-#curl http://ftp.debian.org/debian/dists/sid/main/binary-all/Packages.gz > data/packages.gz
-gunzip ./data/packages.gz
+set -e 
+mirror="https://mirrors.kernel.org/archlinux"
+out="data/packages"
+mkdir -p $out
+for f in core extra community multilib; do
+	fname=$f.db.tar.gz
+	curl "$mirror/$f/os/x86_64/$fname" -o data/$fname
+	tar xf data/$fname -C $out
+	rm data/$fname
+done
